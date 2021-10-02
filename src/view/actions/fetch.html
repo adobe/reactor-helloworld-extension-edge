@@ -1,0 +1,101 @@
+<!--
+Copyright 2021 Adobe
+All Rights Reserved.
+NOTICE: Adobe permits you to use, modify, and distribute this file in
+accordance with the terms of the Adobe license agreement accompanying
+it. If you have received this file from a source other than Adobe,
+then your use, modification, or distribution of it requires the prior
+written permission of Adobe.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Make Fetch Call</title>
+    <link rel="stylesheet" href="../global.css" />
+  </head>
+  <body>
+    <form>
+      <label>
+        Body
+        <textarea id="body" rows="10"></textarea>
+      </label>
+
+      <label>
+        Save Response
+        <input id="saveResponse" type="checkbox" />
+      </label>
+
+      <label>
+        Response Key
+        <input id="responseKey" type="text" autocomplete="off" />
+        <span
+          >The response will be accessible by using a path:
+          arc.ruleStash.hello-world.responses.{responseKey}</span
+        >
+      </label>
+    </form>
+
+    <script src="//assets.adobedtm.com/activation/reactor/extensionbridge/extensionbridge.min.js"></script>
+    <script>
+      const defaultBody =
+        '// Example:\n// return {\n//   greetingsMessage: "Hello World",\n//   outsideMessage: getDataElementValue("response")\n// }';
+      const showContainerIfCheckboxIsChecked = (checkbox, container) => {
+        if (checkbox.checked) {
+          container.style.display = 'block';
+        } else {
+          container.style.display = 'none';
+        }
+      };
+
+      // Define fields.
+      const saveResponseCheckbox = document.getElementById('saveResponse');
+      const responseKeyField = document.getElementById('responseKey');
+      const bodyTextarea = document.getElementById('body');
+
+      window.extensionBridge.register({
+        init: (info) => {
+          const responseKeyContainer = responseKeyField.parentElement;
+
+          // Set Fields Values.
+          bodyTextarea.value =
+            (info.settings && info.settings.bodyFn) || defaultBody;
+          responseKeyField.value =
+            (info.settings && info.settings.responseKey) || '';
+          saveResponseCheckbox.checked = Boolean(
+            info.settings && info.settings.responseKey
+          );
+
+          // Configure behaviour.
+          saveResponseCheckbox.addEventListener('change', function () {
+            showContainerIfCheckboxIsChecked(this, responseKeyContainer);
+          });
+
+          showContainerIfCheckboxIsChecked(
+            saveResponseCheckbox,
+            responseKeyContainer
+          );
+        },
+
+        getSettings: () => {
+          const settings = {};
+
+          if (saveResponseCheckbox.checked) {
+            settings.responseKey = responseKeyField.value;
+          }
+
+          if (bodyTextarea.value !== defaultBody) {
+            settings.bodyFn = bodyTextarea.value;
+          }
+
+          return settings;
+        },
+
+        validate: () => {
+          return true;
+        },
+      });
+    </script>
+  </body>
+</html>

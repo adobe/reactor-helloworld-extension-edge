@@ -1,0 +1,47 @@
+/*
+Copyright 2021 Adobe
+All Rights Reserved.
+NOTICE: Adobe permits you to use, modify, and distribute this file in
+accordance with the terms of the Adobe license agreement accompanying
+it. If you have received this file from a source other than Adobe,
+then your use, modification, or distribution of it requires the prior
+written permission of Adobe.
+*/
+
+body {
+  padding: 12px;
+  font-family: sans-serif;
+  background: #3fb8af;
+  font: 14px sans-serif;
+}
+
+label {
+  display: block;
+  margin-bottom: 2rem;
+}
+
+label span {
+  font-size: 0.8rem;
+}
+
+input:invalid {
+  background-color: lightpink !important;
+}
+
+input[type='text'],
+textarea {
+  width: 40rem;
+  appearance: none;
+  display: block;
+  min-height: 36px;
+  padding: 8px 12px;
+  margin-top: 5px;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-top: 1px solid #c0c0c0;
+  box-sizing: border-box;
+  border-radius: 1px;
+  font-size: 15px;
+  color: #404040;
+  outline: none;
+}

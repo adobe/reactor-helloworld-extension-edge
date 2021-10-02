@@ -1,0 +1,53 @@
+<!--
+Copyright 2021 Adobe
+All Rights Reserved.
+NOTICE: Adobe permits you to use, modify, and distribute this file in
+accordance with the terms of the Adobe license agreement accompanying
+it. If you have received this file from a source other than Adobe,
+then your use, modification, or distribution of it requires the prior
+written permission of Adobe.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Configuration</title>
+    <link rel="stylesheet" href="../global.css" />
+  </head>
+  <body>
+    <form>
+      <label>
+        <span class="label">URL</span>
+        <input id="url" type="text" autocomplete="off" />
+      </label>
+    </form>
+
+    <script src="//assets.adobedtm.com/activation/reactor/extensionbridge/extensionbridge.min.js"></script>
+    <script>
+      window.extensionBridge.register({
+        init: (info) => {
+          document.getElementById('url').value =
+            (info.settings && info.settings.url) || '';
+        },
+
+        getSettings: () => {
+          return {
+            url: document.getElementById('url').value,
+          };
+        },
+
+        validate: () => {
+          const urlField = document.getElementById('url');
+          const urlValue = urlField.value;
+          const errorsFound = urlValue === '';
+
+          urlField.invalid = errorsFound;
+          urlField.required = true;
+
+          return !errorsFound;
+        },
+      });
+    </script>
+  </body>
+</html>

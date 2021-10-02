@@ -1,0 +1,58 @@
+{
+  "platform": "edge",
+  "displayName": "Hello World",
+  "name": "hello-world",
+  "version": "1.0.0",
+  "description": "Send greeting to far-away users in a friendly fashion.",
+  "iconPath": "resources/icons/Use_Your_Own_Logo.svg",
+  "author": {
+    "name": "Adobe Systems Incorporated",
+    "url": "http://adobe.com",
+    "email": "reactor@adobe.com"
+  },
+  "viewBasePath": "src/view/",
+  "configuration": {
+    "viewPath": "configuration/configuration.html",
+    "schema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false,
+      "required": ["url"]
+    }
+  },
+  "actions": [
+    {
+      "name": "fetch",
+      "displayName": "Make Fetch Call",
+      "libPath": "src/lib/actions/fetch.js",
+      "viewPath": "actions/fetch.html",
+      "schema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "bodyFn": {
+            "type": "string"
+          },
+          "responseKey": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": false
+      },
+      "transforms": [
+        {
+          "type": "function",
+          "propertyPath": "bodyFn",
+          "parameters": []
+        }
+      ]
+    }
+  ]
+}
