@@ -17,7 +17,7 @@ npm -v
 Once Node.js is installed, run the sandbox by executing the following command from the command line within your project's directory:
 
 ```bash
-npm i && npm run sandbox
+npx @adobe/reactor-sandbox
 ```
 
 ## Contributing
