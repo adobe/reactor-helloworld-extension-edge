@@ -2,7 +2,7 @@
 
 This is a Hello World extension for Launch. It can be used as a starting template for developing your own Launch edge extension.
 
-For more information regarding Launch extension development, please visit our [developer documentation](https://developer.adobelaunch.com/extensions/). Note the [Scaffold tool](https://www.npmjs.com/package/@adobe/reactor-scaffold) and [Extension Sandbox](https://www.npmjs.com/package/@adobe/reactor-sandbox) will be helpful in developing your own Launch edge extension.
+For more information regarding Launch extension development, please visit our [developer documentation](https://experienceleague.adobe.com/docs/experience-platform/tags/extension-dev/overview.html). Note the [Scaffold tool](https://www.npmjs.com/package/@adobe/reactor-scaffold) and [Extension Sandbox](https://www.npmjs.com/package/@adobe/reactor-sandbox) will be helpful in developing your own Launch edge extension.
 
 ## Development
 
