@@ -5,8 +5,11 @@ on: [push]
 jobs:
   check-version:
     runs-on: ubuntu-latest
-    if: github.repository != 'jeffchasin/reactor-helloworld-extension-edge'
+    if: github.repository != 'jeffchasin/testingTemplate'
+    # if: github.repository != 'jeffchasin/reactor-helloworld-extension-edge'
     steps:
+
+# Deal with the source & target repos
 
       - name: Get current branch name
         run: echo "::set-output name=branch::$(echo ${GITHUB_REF#refs/heads/})"
@@ -55,21 +58,43 @@ jobs:
           replace: ${{ steps.getName.outputs.name }}
           regex: false
 
-      - name: Archive template README.md
+# Apply template docs for target repo
+
+      - name: Archive template repo README.md
         uses: canastro/copy-file-action@master
         with:
           source: "README.md"
           target: "README.template.md"
 
-      - name: Replace with project README.md
+      - name: Archive template repo CODE_OF_CONDUCT.md
+        uses: canastro/copy-file-action@master
+        with:
+          source: "CODE_OF_CONDUCT.md"
+          target: "CODE_OF_CONDUCT.template.md"
+
+      - name: Create target repo project CONTRIBUTING.md
+        uses: canastro/copy-file-action@master
+        with:
+          source: "CONTRIBUTING.reactor.md"
+          target: "CONTRIBUTING.md"
+
+      - name: Create target repo project CODE_OF_CONDUCT.md
+        uses: canastro/copy-file-action@master
+        with:
+          source: "CODE_OF_CONDUCT.reactor.md"
+          target: "CODE_OF_CONDUCT.md"
+
+      - name: Create target repo project README.md
         uses: canastro/copy-file-action@master
         with:
           source: "README.reactor.md"
           target: "README.md"
 
+# Clean up and commit to target repo
+
       - name: Commit changes and delete this workflow
         uses: EndBug/add-and-commit@v7
         with:
-          remove: '["./.github/workflows/reactor_template.yml", "./README.reactor.md"]'
-          message: "Ready to launch! 🚀"
+          remove: '["./CONTRIBUTING.reactor.md", "./CODE_OF_CONDUCT.template.md", "./CODE_OF_CONDUCT.reactor.md", "./.github/CONTRIBUTING.md", "./.github/ISSUE_TEMPLATE.md", "./.github/PULL_REQUEST_TEMPLATE.md", "./README.template.md", "./README.reactor.md", "./.github/workflows/reactor_template.yml"]'
+          message: "🚀 Ready to launch!"
           tag: 'v1.0.0 --force'

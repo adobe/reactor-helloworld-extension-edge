@@ -4,23 +4,9 @@ This is a Hello World extension for Launch. It can be used as a starting templat
 
 For more information regarding Launch extension development, please visit our [developer documentation](https://experienceleague.adobe.com/docs/experience-platform/tags/extension-dev/overview.html). Note the [Scaffold tool](https://www.npmjs.com/package/@adobe/reactor-scaffold) and [Extension Sandbox](https://www.npmjs.com/package/@adobe/reactor-sandbox) will be helpful in developing your own Launch edge extension.
 
-## Get started: Use This Template
-
-This repository is a [template](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template) so you can easily create your own version as a starter for your Edge extension project.
-
-### Generate your own version here
-
-You can click the green "Use this template" button above, or [click here to use this template](https://github.com/adobe/reactor-helloworld-extension-edge/generate) now. That link, or the green button will create a version of this Hello World edge extension repository in your GitHub account to use as a starter for your own projects.
-
-### With GitHub CLI
-
-If you use the [GitHub CLI](https://cli.github.com/), get started from your terminal command line:
-
-```sh
-gh repo create myEdgeExtension --template adobe/reactor-helloworld-extension-edge
-```
-
 ## Development
+
+Please consider joining the community extension developer [Slack workspace](http://join.connectionsdevs.chat).
 
 ### Running the sandbox
 
