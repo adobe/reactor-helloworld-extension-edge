@@ -6,6 +6,8 @@ For more information regarding Launch extension development, please visit our [d
 
 ## Development
 
+Please consider joining the community extension developer [Slack workspace](http://join.connectionsdevs.chat).
+
 ### Running the sandbox
 
 Before running the sandbox, you must first have [Node.js](https://nodejs.org/en/) installed on your computer. Your npm version (npm comes bundled with Node.js) will need to be at least 7.0.0. You can check the installed version by running the following command from a command line:
